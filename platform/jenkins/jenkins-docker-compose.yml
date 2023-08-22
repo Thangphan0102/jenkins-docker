@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  jenkins:
+  jenkins_network:
     driver: bridge
 
 services:
@@ -14,14 +14,14 @@ services:
       - 2376:2376
     privileged: true
     networks:
-      - jenkins
+      - jenkins_network
   jenkins:
     container_name: jenkins
     user: root
     build:
       context: jenkins/
     networks:
-      - jenkins
+      - jenkins_network
     ports:
       - 8080:8080
       - 50000:50000
