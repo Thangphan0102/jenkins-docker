@@ -20,13 +20,13 @@ services:
     user: root
     build:
       context: jenkins/
-    restart: on-failure
     networks:
       - jenkins
     ports:
-      - 8081:8080
+      - 8080:8080
       - 50000:50000
     volumes:
       - /run_env/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: on-failure
   
