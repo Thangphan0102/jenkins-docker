@@ -1,7 +1,10 @@
 pipeline {
     agent {
-        python { image 'python:3.9' }
+        docker {
+            image 'python:3.9'
+        }
     }
+    
     stages {
         stage('Test') {
             steps {
