@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        any
+        python { image 'python:3.9' }
     }
     stages {
         stage('Test') {
