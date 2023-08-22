@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'hello-world:latest' }
+        any
     }
     stages {
         stage('Test') {
