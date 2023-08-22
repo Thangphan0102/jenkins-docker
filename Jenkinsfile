@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh 'node --version'
             }
         }
