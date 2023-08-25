@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'docker info'
+                sh 'sudo docker info'
             }
         }
     }

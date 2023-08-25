@@ -1,43 +1,15 @@
 version: '3'
 
-networks:
-  jenkins_network:
-    driver: bridge
-
 services:
-  docker:
-    container_name: docker
-    image: docker:dind
-    environment:
-      - DOCKER_TLS_VERIFY=/certs
-    volumes:
-      - /run_env/jenkins_home:/var/jenkins_home
-      - jenkins-docker-certs:/certs/client
-    ports:
-      - 2376:2376
-    privileged: true
-    networks:
-      - jenkins_network
   jenkins:
+    build: ./jenkins
     container_name: jenkins
     user: root
-    environment:
-      - DOCKER_HOST=tcp://docker:2376
-      - DOCKER_CERT_PATH=/certs/client
-      - DOCKER_TLS_VERIFY=1
-    build:
-      context: jenkins/
-    networks:
-      - jenkins_network
+    privileged: true
     ports:
       - 8081:8080
       - 50000:50000
     volumes:
-      - /run_env/jenkins_home:/var/jenkins_home
+      - ./run_env/jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - jenkins-docker-certs:/certs/client:ro
     restart: on-failure
-  
-
-volumes:
-  jenkins-docker-certs:
