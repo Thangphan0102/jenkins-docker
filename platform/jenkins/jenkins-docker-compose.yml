@@ -7,7 +7,7 @@ networks:
 services:
   jenkins:
     build: ./jenkins
-    container_name: jenkins-blueocean
+    container_name: jenkins
     networks:
       - jenkins_network
     environment:
