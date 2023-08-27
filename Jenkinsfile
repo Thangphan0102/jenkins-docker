@@ -2,14 +2,14 @@
 pipeline {
     agent {
         docker {
-            image 'node:18.17.1-alpine3.18'
+            image 'python:3.9'
         }
     }
 
     stages {
         stage('Test') {
             steps {
-                bash 'sudo docker info'
+                bash 'docker info'
             }
         }
     }
