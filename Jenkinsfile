@@ -1,8 +1,8 @@
 // Example of a Jenkinsfile
 pipeline {
     agent {
-        docker {
-            image 'python:3.9-slim'
+        node {
+            label 'docker-agent'
         }
     }
 
